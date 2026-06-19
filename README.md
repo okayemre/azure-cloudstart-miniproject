@@ -33,7 +33,7 @@
 |---|---|
 | 🏢 Company | CloudStart GmbH |
 | 📍 Location | Vienna, Austria |
-| 🌍 Azure Region | West Europe |
+| 🌍 Azure Region | Sweden Central |
 | 📦 Resource Group | `rg-cloudstart` |
 | 👥 Employees | 3 fictional users with different access levels |
 
@@ -68,7 +68,10 @@ Created a Virtual Network with two separate subnets — one for applications, on
 - ✅ Subnet `snet-app` + NSG with RDP rule
 - ✅ Subnet `snet-mgmt` + NSG with SSH rule
 
-📸 Screenshots: [`/screenshots/a1-network`](./screenshots/a1-network)
+📸
+| nsg-app — Inbound Rules | nsg-mgmt — Inbound Rules |
+|---|---|
+| ![nsg-app inbound rules](./screenshots/a1-network/01-nsg-app-inbound-rules.png) | ![nsg-mgmt inbound rules](./screenshots/a1-network/02-nsg-mgmt-inbound-rules.png) |
 
 ---
 
@@ -76,20 +79,26 @@ Created a Virtual Network with two separate subnets — one for applications, on
 Deployed one Windows Server VM and one Linux (Ubuntu) VM, each in its correct subnet. Connected to both via RDP and SSH.
 
 - ✅ `vm-app01` — Windows Server 2022 (B1s)
-- ✅ `vm-mgmt01` — Ubuntu Server 22.04 (B1s)
+- ✅ `vm-mgmt01` — Ubuntu Server 24.04 (B1s)
 
-📸 Screenshots: [`/screenshots/a2-vms`](./screenshots/a2-vms)
+📸
+| RDP → Server Manager (vm-app01) | SSH → uname -a (vm-mgmt01) |
+|---|---|
+| ![Server Manager vm-app01](./screenshots/a2-vms/01-server-manager-vm-app01.png) | ![SSH connection vm-mgmt01](./screenshots/a2-vms/02-ssh-connection-vm-mgmt01.png) |
 
 ---
 
 ### 3️⃣ Storage & Blob 🗄️
 Set up a Storage Account with a private Blob Container, uploaded a test file, and generated a temporary secure link (SAS URL) to access it.
 
-- ✅ Storage Account `stcloudstart...`
+- ✅ Storage Account `stcloudstartmr`
 - ✅ Private Blob Container `dokumente`
 - ✅ SAS URL (1 hour validity)
 
-📸 Screenshots: [`/screenshots/a3-storage`](./screenshots/a3-storage)
+📸
+| Blob Container (Private) | SAS URL opened in browser |
+|---|---|
+| ![Blob container dokumente](./screenshots/a3-storage/01-blob-container-dokumente.png) | ![SAS URL test](./screenshots/a3-storage/02-sas-url-test.png) |
 
 ---
 
@@ -105,15 +114,20 @@ Created 3 fictional users in Microsoft Entra ID, grouped them, and assigned **le
 - ✅ Security Group `grp-entwickler`
 - ✅ RBAC roles assigned on Resource Group level
 
-📸 Screenshots: [`/screenshots/a4-entra-rbac`](./screenshots/a4-entra-rbac)
+📸
+![Entra ID Users](./screenshots/a4-entra-rbac/01-entra-id-users.png)
+
+| Group Members (grp-entwickler) | RBAC Role Assignments |
+|---|---|
+| ![Group members](./screenshots/a4-entra-rbac/02-group-members-grp-entwickler.png) | ![RBAC role assignments](./screenshots/a4-entra-rbac/03-rbac-role-assignments.png) |
 
 ---
 
 ### 5️⃣ Monitoring 📊
 Set up basic monitoring on the VM with a CPU metric chart and an alert rule that triggers an email if CPU usage gets too high.
 
-- ✅ CPU metric chart (last hour)
-- ✅ Alert Rule `alert-cpu-hoch` (>80% CPU → email)
+- ⬜ CPU metric chart (last hour)
+- ⬜ Alert Rule `alert-cpu-hoch` (>80% CPU → email)
 
 📸 Screenshots: [`/screenshots/a5-monitoring`](./screenshots/a5-monitoring)
 
@@ -125,8 +139,8 @@ Reviewed the **Secure Score** and security recommendations in Microsoft Defender
 > 💡 **Before:** RDP port open to the entire internet (`Any`)
 > 💡 **After:** RDP port restricted to my own IP address
 
-- ✅ Secure Score reviewed
-- ✅ At least 1 recommendation fixed
+- ⬜ Secure Score reviewed
+- ⬜ At least 1 recommendation fixed
 
 📸 Screenshots: [`/screenshots/a6-defender`](./screenshots/a6-defender)
 
@@ -135,8 +149,8 @@ Reviewed the **Secure Score** and security recommendations in Microsoft Defender
 ### ⭐ Bonus: App Service 🌍
 Deployed a simple Web App on a free App Service Plan (F1 tier) to test PaaS deployment.
 
-- ✅ App Service Plan `asp-cloudstart` (F1 Free)
-- ✅ Web App `app-cloudstart-...`
+- ⬜ App Service Plan `asp-cloudstart` (F1 Free)
+- ⬜ Web App `app-cloudstart-...`
 
 📸 Screenshots: [`/screenshots/bonus-appservice`](./screenshots/bonus-appservice)
 
@@ -149,8 +163,8 @@ All resources are tagged consistently for clarity and cost tracking — good clo
 | Tag | Value |
 |---|---|
 | `Project` | CloudStart-MiniProject |
-| `Environment` | Demo |
-| `Owner` | Emre Okay |
+| `Environment` | Training |
+| `Owner` | Emre |
 | `CostCenter` | Student-Credit |
 | `ManagedBy` | Manual |
 | `DeleteAfter` | 2026-06-30 |
@@ -195,20 +209,6 @@ azure-cloudstart-miniproject/
     └── architecture-diagram.svg
 ```
 
----
-
-## 🎓 About me
-
-I'm Emre, currently completing an IT System Administration & Cloud Engineering Weiterbildung at DCI (Digital Career Institute) in Germany, working towards a career as an Azure Administrator / Cloud Engineer.
-
-🔗 More projects: [github.com/okayemre](https://github.com/okayemre)
-
----
-
-## 📌 Status
-
-🟡 **In Progress** — this README will be updated with final screenshots, results, and the architecture diagram once the project is complete.
-
 <div align="right">
 
 [⬆️ Back to language selector](#top)
@@ -235,7 +235,7 @@ I'm Emre, currently completing an IT System Administration & Cloud Engineering W
 |---|---|
 | 🏢 Firma | CloudStart GmbH |
 | 📍 Standort | Wien, Österreich |
-| 🌍 Azure Region | West Europe |
+| 🌍 Azure Region | Sweden Central |
 | 📦 Resource Group | `rg-cloudstart` |
 | 👥 Mitarbeiter | 3 fiktive Benutzer mit unterschiedlichen Zugriffsrechten |
 
@@ -270,7 +270,10 @@ Virtual Network mit zwei getrennten Subnetzen erstellt — eines für Anwendunge
 - ✅ Subnet `snet-app` + NSG mit RDP-Regel
 - ✅ Subnet `snet-mgmt` + NSG mit SSH-Regel
 
-📸 Screenshots: [`/screenshots/a1-network`](./screenshots/a1-network)
+📸
+| nsg-app — Inbound Rules | nsg-mgmt — Inbound Rules |
+|---|---|
+| ![nsg-app inbound rules](./screenshots/a1-network/01-nsg-app-inbound-rules.png) | ![nsg-mgmt inbound rules](./screenshots/a1-network/02-nsg-mgmt-inbound-rules.png) |
 
 ---
 
@@ -278,20 +281,26 @@ Virtual Network mit zwei getrennten Subnetzen erstellt — eines für Anwendunge
 Eine Windows Server VM und eine Linux (Ubuntu) VM bereitgestellt, jeweils im richtigen Subnetz. Verbindung per RDP und SSH erfolgreich getestet.
 
 - ✅ `vm-app01` — Windows Server 2022 (B1s)
-- ✅ `vm-mgmt01` — Ubuntu Server 22.04 (B1s)
+- ✅ `vm-mgmt01` — Ubuntu Server 24.04 (B1s)
 
-📸 Screenshots: [`/screenshots/a2-vms`](./screenshots/a2-vms)
+📸
+| RDP → Server Manager (vm-app01) | SSH → uname -a (vm-mgmt01) |
+|---|---|
+| ![Server Manager vm-app01](./screenshots/a2-vms/01-server-manager-vm-app01.png) | ![SSH Verbindung vm-mgmt01](./screenshots/a2-vms/02-ssh-connection-vm-mgmt01.png) |
 
 ---
 
 ### 3️⃣ Storage & Blob 🗄️
 Storage Account mit privatem Blob Container eingerichtet, Testdatei hochgeladen und einen temporären sicheren Link (SAS URL) für den Zugriff erstellt.
 
-- ✅ Storage Account `stcloudstart...`
+- ✅ Storage Account `stcloudstartmr`
 - ✅ Privater Blob Container `dokumente`
 - ✅ SAS URL (1 Stunde gültig)
 
-📸 Screenshots: [`/screenshots/a3-storage`](./screenshots/a3-storage)
+📸
+| Blob Container (Privat) | SAS URL im Browser geöffnet |
+|---|---|
+| ![Blob Container dokumente](./screenshots/a3-storage/01-blob-container-dokumente.png) | ![SAS URL Test](./screenshots/a3-storage/02-sas-url-test.png) |
 
 ---
 
@@ -307,15 +316,20 @@ Storage Account mit privatem Blob Container eingerichtet, Testdatei hochgeladen 
 - ✅ Sicherheitsgruppe `grp-entwickler`
 - ✅ RBAC-Rollen auf Resource-Group-Ebene zugewiesen
 
-📸 Screenshots: [`/screenshots/a4-entra-rbac`](./screenshots/a4-entra-rbac)
+📸
+![Entra ID Benutzer](./screenshots/a4-entra-rbac/01-entra-id-users.png)
+
+| Gruppenmitglieder (grp-entwickler) | RBAC-Rollenzuweisungen |
+|---|---|
+| ![Gruppenmitglieder](./screenshots/a4-entra-rbac/02-group-members-grp-entwickler.png) | ![RBAC Rollenzuweisungen](./screenshots/a4-entra-rbac/03-rbac-role-assignments.png) |
 
 ---
 
 ### 5️⃣ Monitoring 📊
 Basis-Monitoring auf der VM eingerichtet — CPU-Metrik-Diagramm plus Alert-Regel, die bei zu hoher CPU-Auslastung eine E-Mail auslöst.
 
-- ✅ CPU-Metrik-Diagramm (letzte Stunde)
-- ✅ Alert Rule `alert-cpu-hoch` (>80% CPU → E-Mail)
+- ⬜ CPU-Metrik-Diagramm (letzte Stunde)
+- ⬜ Alert Rule `alert-cpu-hoch` (>80% CPU → E-Mail)
 
 📸 Screenshots: [`/screenshots/a5-monitoring`](./screenshots/a5-monitoring)
 
@@ -327,8 +341,8 @@ Basis-Monitoring auf der VM eingerichtet — CPU-Metrik-Diagramm plus Alert-Rege
 > 💡 **Vorher:** RDP-Port für das gesamte Internet offen (`Any`)
 > 💡 **Nachher:** RDP-Port auf meine eigene IP-Adresse eingeschränkt
 
-- ✅ Secure Score überprüft
-- ✅ Mindestens 1 Empfehlung umgesetzt
+- ⬜ Secure Score überprüft
+- ⬜ Mindestens 1 Empfehlung umgesetzt
 
 📸 Screenshots: [`/screenshots/a6-defender`](./screenshots/a6-defender)
 
@@ -337,8 +351,8 @@ Basis-Monitoring auf der VM eingerichtet — CPU-Metrik-Diagramm plus Alert-Rege
 ### ⭐ Bonus: App Service 🌍
 Eine einfache Web App auf einem kostenlosen App Service Plan (F1 Tier) bereitgestellt, um PaaS-Deployment zu testen.
 
-- ✅ App Service Plan `asp-cloudstart` (F1 Free)
-- ✅ Web App `app-cloudstart-...`
+- ⬜ App Service Plan `asp-cloudstart` (F1 Free)
+- ⬜ Web App `app-cloudstart-...`
 
 📸 Screenshots: [`/screenshots/bonus-appservice`](./screenshots/bonus-appservice)
 
@@ -351,8 +365,8 @@ Alle Ressourcen sind einheitlich getaggt — für Übersicht und Kostenkontrolle
 | Tag | Wert |
 |---|---|
 | `Project` | CloudStart-MiniProject |
-| `Environment` | Demo |
-| `Owner` | Emre Okay |
+| `Environment` | Training |
+| `Owner` | Emre |
 | `CostCenter` | Student-Credit |
 | `ManagedBy` | Manual |
 | `DeleteAfter` | 2026-06-30 |
@@ -396,20 +410,6 @@ azure-cloudstart-miniproject/
 └── docs/
     └── architecture-diagram.svg
 ```
-
----
-
-## 🎓 Über mich
-
-Ich bin Emre und absolviere aktuell eine Weiterbildung zum IT System Administrator & Cloud Engineer am DCI (Digital Career Institute) in Deutschland — mit dem Ziel, als Azure Administrator / Cloud Engineer zu arbeiten.
-
-🔗 Weitere Projekte: [github.com/okayemre](https://github.com/okayemre)
-
----
-
-## 📌 Status
-
-🟡 **In Bearbeitung** — dieses README wird nach Projektabschluss mit finalen Screenshots, Ergebnissen und dem Architektur-Diagramm aktualisiert.
 
 <div align="right">
 
