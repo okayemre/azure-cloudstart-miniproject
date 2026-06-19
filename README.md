@@ -2,7 +2,14 @@
 
 ![Status](https://img.shields.io/badge/status-complete-brightgreen)
 ![Azure](https://img.shields.io/badge/cloud-Microsoft%20Azure-0078D4)
-![Made by](https://img.shields.io/badge/made%20by-Emre%20Okay-blueviolet)
+
+![Virtual Network](https://img.shields.io/badge/Virtual%20Network-0078D4?logo=microsoftazure&logoColor=white)
+![Virtual Machines](https://img.shields.io/badge/Virtual%20Machines-0078D4?logo=microsoftazure&logoColor=white)
+![Storage](https://img.shields.io/badge/Blob%20Storage-0078D4?logo=microsoftazure&logoColor=white)
+![Entra ID](https://img.shields.io/badge/Microsoft%20Entra%20ID-0078D4?logo=microsoftazure&logoColor=white)
+![Monitor](https://img.shields.io/badge/Azure%20Monitor-0078D4?logo=microsoftazure&logoColor=white)
+![Defender](https://img.shields.io/badge/Defender%20for%20Cloud-0078D4?logo=microsoftazure&logoColor=white)
+![App Service](https://img.shields.io/badge/App%20Service-0078D4?logo=microsoftazure&logoColor=white)
 
 <a name="top"></a>
 ### 🌐 Choose your language / Wähle deine Sprache
