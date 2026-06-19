@@ -4,18 +4,20 @@
 ![Azure](https://img.shields.io/badge/cloud-Microsoft%20Azure-0078D4)
 ![Made by](https://img.shields.io/badge/made%20by-Emre%20Okay-blueviolet)
 
+<a name="top"></a>
 ### 🌐 Choose your language / Wähle deine Sprache
 
 <div align="center">
 
-### [🇬🇧 **READ IN ENGLISH**](#-english) &nbsp;&nbsp;|&nbsp;&nbsp; [🇩🇪 **AUF DEUTSCH LESEN**](#-deutsch)
+### [**EN — READ IN ENGLISH**](#english) &nbsp;&nbsp;|&nbsp;&nbsp; [🇩🇪 **AUF DEUTSCH LESEN**](#deutsch)
 
 </div>
 
 ---
 ---
 
-# 🇬🇧 ENGLISH
+<a name="english"></a>
+# EN — ENGLISH
 
 ## 📖 About this project
 
@@ -209,13 +211,14 @@ I'm Emre, currently completing an IT System Administration & Cloud Engineering W
 
 <div align="right">
 
-[⬆️ Back to language selector](#-choose-your-language--wähle-deine-sprache)
+[⬆️ Back to language selector](#top)
 
 </div>
 
 ---
 ---
 
+<a name="deutsch"></a>
 # 🇩🇪 DEUTSCH
 
 ## 📖 Über dieses Projekt
@@ -410,6 +413,6 @@ Ich bin Emre und absolviere aktuell eine Weiterbildung zum IT System Administrat
 
 <div align="right">
 
-[⬆️ Zurück zur Sprachauswahl](#-choose-your-language--wähle-deine-sprache)
+[⬆️ Zurück zur Sprachauswahl](#top)
 
 </div>
