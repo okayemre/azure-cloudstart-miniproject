@@ -1,6 +1,6 @@
 # ☁️ Azure CloudStart GmbH – Mini Project
 
-![Status](https://img.shields.io/badge/status-in%20progress-yellow)
+![Status](https://img.shields.io/badge/status-complete-brightgreen)
 ![Azure](https://img.shields.io/badge/cloud-Microsoft%20Azure-0078D4)
 ![Made by](https://img.shields.io/badge/made%20by-Emre%20Okay-blueviolet)
 
@@ -9,7 +9,7 @@
 
 <div align="center">
 
-### [**EN — READ IN ENGLISH**](#english) &nbsp;&nbsp;|&nbsp;&nbsp; [🇩🇪 **AUF DEUTSCH LESEN**](#deutsch)
+### [**Read in English**](#english) &nbsp;&nbsp;|&nbsp;&nbsp; [**Auf Deutsch lesen**](#deutsch)
 
 </div>
 
@@ -17,7 +17,7 @@
 ---
 
 <a name="english"></a>
-# EN — ENGLISH
+# English
 
 ## 📖 About this project
 
@@ -52,10 +52,8 @@ The goal: build a small but realistic company IT setup in Azure — with proper 
  ┣ 👤 Microsoft Entra ID → Users + Group + RBAC
  ┣ 📊 Azure Monitor → CPU Alert
  ┣ 🛡️ Microsoft Defender for Cloud → Secure Score + Recommendations
- ┗ 🌍 (Bonus) App Service → Web App
+ ┗ 🌍 App Service → Web App
 ```
-
-> *A detailed diagram (SVG) will be added here once the project is finished.*
 
 ---
 
@@ -126,33 +124,42 @@ Created 3 fictional users in Microsoft Entra ID, grouped them, and assigned **le
 ### 5️⃣ Monitoring 📊
 Set up basic monitoring on the VM with a CPU metric chart and an alert rule that triggers an email if CPU usage gets too high.
 
-- ⬜ CPU metric chart (last hour)
-- ⬜ Alert Rule `alert-cpu-hoch` (>80% CPU → email)
+- ✅ CPU metric chart (last hour)
+- ✅ Alert Rule `alert-cpu-hoch` (>80% CPU → email, Severity 2)
 
-📸 Screenshots: [`/screenshots/a5-monitoring`](./screenshots/a5-monitoring)
+📸
+| CPU Metric Chart | Alert Rule Configuration |
+|---|---|
+| ![CPU metric chart](./screenshots/a5-monitoring/01-cpu-metric-chart.png) | ![Alert rule config](./screenshots/a5-monitoring/02-alert-rule-config.png) |
 
 ---
 
 ### 6️⃣ Security Check (Defender for Cloud) 🛡️
-Reviewed the **Secure Score** and security recommendations in Microsoft Defender for Cloud. Found and fixed real security gaps — for example, restricting the open RDP rule instead of leaving it open to "Any".
+Reviewed the **Secure Score** in Microsoft Defender for Cloud (Foundational CSPM, free tier).
 
-> 💡 **Before:** RDP port open to the entire internet (`Any`)
-> 💡 **After:** RDP port restricted to my own IP address
+- ✅ Secure Score reviewed (**31%**)
+- ⚠️ Recommendations review & fix: **not completed** — Defender's resource inventory had not finished syncing the newly created resources (`vm-app01`, `vm-mgmt01`, NSGs, Storage Account) within the project timeframe, even though the Foundational CSPM plan was active with full coverage. This is a known sync-delay behavior on fresh Azure for Students subscriptions.
 
-- ⬜ Secure Score reviewed
-- ⬜ At least 1 recommendation fixed
+📸
+![Secure Score](./screenshots/a6-defender/01-secure-score.png)
 
-📸 Screenshots: [`/screenshots/a6-defender`](./screenshots/a6-defender)
+> 💡 **Lesson learned:** Defender for Cloud's recommendation engine can take several hours (sometimes up to 24h) to fully index brand-new resources, even when the plan itself is active immediately. Planning security reviews a day after resource creation — rather than back-to-back — would avoid this gap.
 
 ---
 
-### ⭐ Bonus: App Service 🌍
-Deployed a simple Web App on a free App Service Plan (F1 tier) to test PaaS deployment.
+### ⭐ App Service 🌍
+Deployed a Web App on a free App Service Plan (F1 tier) to test PaaS deployment.
 
-- ⬜ App Service Plan `asp-cloudstart` (F1 Free)
-- ⬜ Web App `app-cloudstart-...`
+- ✅ App Service Plan `asp-cloudstart` (F1 Free)
+- ✅ Web App `app-cloudstart-mr`
+- ✅ Application Setting `UMGEBUNG = Test`
 
-📸 Screenshots: [`/screenshots/bonus-appservice`](./screenshots/bonus-appservice)
+📸
+| Web App running | Application Setting |
+|---|---|
+| ![Web app default page](./screenshots/bonus-appservice/01-webapp-default-page.png) | ![App setting UMGEBUNG](./screenshots/bonus-appservice/02-app-setting-umgebung.png) |
+
+> 💡 **Debugging note:** The first deployment attempt (Windows + Node 24 LTS runtime) failed with *"64 Bit worker processes cannot be used... as the plan does not allow it"* — Node 24 LTS requires a 64-bit worker process on Windows, which the F1 (Free) tier doesn't support. Switching the runtime stack to **.NET** resolved it immediately, since .NET on Windows F1 defaults to a compatible 32-bit worker process.
 
 ---
 
@@ -181,7 +188,7 @@ All resources are tagged consistently for clarity and cost tracking — good clo
 | 👤 Identity | Microsoft Entra ID, RBAC |
 | 📊 Monitoring | Azure Monitor, Alert Rules |
 | 🛡️ Security | Microsoft Defender for Cloud |
-| 🌍 PaaS (Bonus) | App Service |
+| 🌍 PaaS | App Service |
 
 ---
 
@@ -219,7 +226,7 @@ azure-cloudstart-miniproject/
 ---
 
 <a name="deutsch"></a>
-# 🇩🇪 DEUTSCH
+# Deutsch
 
 ## 📖 Über dieses Projekt
 
@@ -254,10 +261,8 @@ Das Ziel: ein kleines, aber realistisches Firmen-IT-Setup in Azure aufbauen – 
  ┣ 👤 Microsoft Entra ID → Users + Group + RBAC
  ┣ 📊 Azure Monitor → CPU Alert
  ┣ 🛡️ Microsoft Defender for Cloud → Secure Score + Empfehlungen
- ┗ 🌍 (Bonus) App Service → Web App
+ ┗ 🌍 App Service → Web App
 ```
-
-> *Ein detailliertes Diagramm (SVG) wird hier ergänzt, sobald das Projekt fertig ist.*
 
 ---
 
@@ -328,33 +333,42 @@ Storage Account mit privatem Blob Container eingerichtet, Testdatei hochgeladen 
 ### 5️⃣ Monitoring 📊
 Basis-Monitoring auf der VM eingerichtet — CPU-Metrik-Diagramm plus Alert-Regel, die bei zu hoher CPU-Auslastung eine E-Mail auslöst.
 
-- ⬜ CPU-Metrik-Diagramm (letzte Stunde)
-- ⬜ Alert Rule `alert-cpu-hoch` (>80% CPU → E-Mail)
+- ✅ CPU-Metrik-Diagramm (letzte Stunde)
+- ✅ Alert Rule `alert-cpu-hoch` (>80% CPU → E-Mail, Severity 2)
 
-📸 Screenshots: [`/screenshots/a5-monitoring`](./screenshots/a5-monitoring)
+📸
+| CPU-Metrik-Diagramm | Alert Rule Konfiguration |
+|---|---|
+| ![CPU Metrik Diagramm](./screenshots/a5-monitoring/01-cpu-metric-chart.png) | ![Alert Rule Konfiguration](./screenshots/a5-monitoring/02-alert-rule-config.png) |
 
 ---
 
 ### 6️⃣ Sicherheitscheck (Defender for Cloud) 🛡️
-**Secure Score** und Sicherheitsempfehlungen in Microsoft Defender for Cloud überprüft. Echte Sicherheitslücken gefunden und behoben — zum Beispiel die offene RDP-Regel eingeschränkt, statt sie für "Any" offen zu lassen.
+**Secure Score** in Microsoft Defender for Cloud überprüft (Foundational CSPM, kostenloser Tier).
 
-> 💡 **Vorher:** RDP-Port für das gesamte Internet offen (`Any`)
-> 💡 **Nachher:** RDP-Port auf meine eigene IP-Adresse eingeschränkt
+- ✅ Secure Score überprüft (**31%**)
+- ⚠️ Empfehlungen prüfen & umsetzen: **nicht abgeschlossen** — Defenders Ressourcen-Inventar hatte die neu erstellten Ressourcen (`vm-app01`, `vm-mgmt01`, NSGs, Storage Account) innerhalb des Projektzeitraums noch nicht vollständig synchronisiert, obwohl der Foundational-CSPM-Plan aktiv war und volle Abdeckung zeigte. Dies ist ein bekanntes Synchronisierungsverhalten bei frischen Azure-for-Students-Subscriptions.
 
-- ⬜ Secure Score überprüft
-- ⬜ Mindestens 1 Empfehlung umgesetzt
+📸
+![Secure Score](./screenshots/a6-defender/01-secure-score.png)
 
-📸 Screenshots: [`/screenshots/a6-defender`](./screenshots/a6-defender)
+> 💡 **Erkenntnis:** Defender for Cloud's Empfehlungs-Engine kann mehrere Stunden (manchmal bis zu 24h) brauchen, um brandneue Ressourcen vollständig zu indexieren — auch wenn der Plan selbst sofort aktiv ist. Sicherheitsüberprüfungen einen Tag nach der Ressourcenerstellung einzuplanen, statt direkt im Anschluss, würde diese Lücke vermeiden.
 
 ---
 
-### ⭐ Bonus: App Service 🌍
-Eine einfache Web App auf einem kostenlosen App Service Plan (F1 Tier) bereitgestellt, um PaaS-Deployment zu testen.
+### ⭐ App Service 🌍
+Eine Web App auf einem kostenlosen App Service Plan (F1 Tier) bereitgestellt, um PaaS-Deployment zu testen.
 
-- ⬜ App Service Plan `asp-cloudstart` (F1 Free)
-- ⬜ Web App `app-cloudstart-...`
+- ✅ App Service Plan `asp-cloudstart` (F1 Free)
+- ✅ Web App `app-cloudstart-mr`
+- ✅ Application Setting `UMGEBUNG = Test`
 
-📸 Screenshots: [`/screenshots/bonus-appservice`](./screenshots/bonus-appservice)
+📸
+| Web App läuft | Application Setting |
+|---|---|
+| ![Web App Standardseite](./screenshots/bonus-appservice/01-webapp-default-page.png) | ![App Setting UMGEBUNG](./screenshots/bonus-appservice/02-app-setting-umgebung.png) |
+
+> 💡 **Debugging-Hinweis:** Der erste Deployment-Versuch (Windows + Node 24 LTS Runtime) schlug fehl mit *"64 Bit worker processes cannot be used... as the plan does not allow it"* — Node 24 LTS benötigt unter Windows einen 64-Bit-Worker-Prozess, den der F1-(Free)-Tier nicht unterstützt. Der Wechsel der Runtime auf **.NET** löste das Problem sofort, da .NET unter Windows F1 standardmäßig einen kompatiblen 32-Bit-Worker-Prozess verwendet.
 
 ---
 
@@ -383,7 +397,7 @@ Alle Ressourcen sind einheitlich getaggt — für Übersicht und Kostenkontrolle
 | 👤 Identity | Microsoft Entra ID, RBAC |
 | 📊 Monitoring | Azure Monitor, Alert Rules |
 | 🛡️ Security | Microsoft Defender for Cloud |
-| 🌍 PaaS (Bonus) | App Service |
+| 🌍 PaaS | App Service |
 
 ---
 
