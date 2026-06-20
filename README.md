@@ -62,6 +62,10 @@ The goal: build a small but realistic company IT setup in Azure — with proper 
  ┗ 🌍 App Service → Web App
 ```
 
+📐 Visual diagram:
+
+![Architecture Diagram](./docs/architecture-diagram.svg)
+
 ---
 
 ## 🔧 What I built
@@ -270,6 +274,10 @@ Das Ziel: ein kleines, aber realistisches Firmen-IT-Setup in Azure aufbauen – 
  ┣ 🛡️ Microsoft Defender for Cloud → Secure Score + Empfehlungen
  ┗ 🌍 App Service → Web App
 ```
+
+📐 Visuelles Diagramm:
+
+![Architektur-Diagramm](./docs/architecture-diagram.svg)
 
 ---
 
