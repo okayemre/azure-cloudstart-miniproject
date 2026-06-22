@@ -146,15 +146,26 @@ Set up basic monitoring on the VM with a CPU metric chart and an alert rule that
 ---
 
 ### 6️⃣ Security Check (Defender for Cloud) 🛡️
-Reviewed the **Secure Score** in Microsoft Defender for Cloud (Foundational CSPM, free tier).
+Reviewed the **Secure Score** and security recommendations in Microsoft Defender for Cloud (Foundational CSPM, free tier). Found and fixed a real security gap — the open RDP rule that was intentionally left as "Any" in A1 was detected and restricted to a specific IP.
 
 - ✅ Secure Score reviewed (**31%**)
-- ⚠️ Recommendations review & fix: **not completed** — Defender's resource inventory had not finished syncing the newly created resources (`vm-app01`, `vm-mgmt01`, NSGs, Storage Account) within the project timeframe, even though the Foundational CSPM plan was active with full coverage. This is a known sync-delay behavior on fresh Azure for Students subscriptions.
+- ✅ Recommendations filtered for `rg-cloudstart` (9 findings across `vm-app01` and `stcloudstartmr`)
+- ✅ "Management ports should be closed" recommendation reviewed and applied
+- ✅ `nsg-app` → `Allow-RDP` rule: Source changed from `Any` → own IP address (`/32`)
+
+> 💡 **Before:** RDP port open to the entire internet (`Any`)
+> 💡 **After:** RDP port restricted to a single trusted IP address
+
+> ⚠️ **Lesson learned:** Defender for Cloud's recommendation engine can take several hours (sometimes up to 24h) to fully index brand-new resources, even when the plan itself is active immediately. Planning security reviews a day after resource creation avoids this gap.
 
 📸
-![Secure Score](./screenshots/a6-defender/01-secure-score.png)
+| Secure Score | Recommendations list |
+|---|---|
+| ![Secure Score](./screenshots/a6-defender/01-secure-score.png) | ![Recommendations list](./screenshots/a6-defender/02-recommendations-list.png) |
 
-> 💡 **Lesson learned:** Defender for Cloud's recommendation engine can take several hours (sometimes up to 24h) to fully index brand-new resources, even when the plan itself is active immediately. Planning security reviews a day after resource creation — rather than back-to-back — would avoid this gap.
+| Management ports recommendation | NSG RDP rule fixed |
+|---|---|
+| ![Management ports](./screenshots/a6-defender/03-management-ports-recommendation.png) | ![NSG RDP fix](./screenshots/a6-defender/04-nsg-rdp-fix.png) |
 
 ---
 
@@ -359,15 +370,26 @@ Basis-Monitoring auf der VM eingerichtet — CPU-Metrik-Diagramm plus Alert-Rege
 ---
 
 ### 6️⃣ Sicherheitscheck (Defender for Cloud) 🛡️
-**Secure Score** in Microsoft Defender for Cloud überprüft (Foundational CSPM, kostenloser Tier).
+**Secure Score** und Sicherheitsempfehlungen in Microsoft Defender for Cloud überprüft (Foundational CSPM, kostenloser Tier). Eine echte Sicherheitslücke gefunden und behoben — die in A1 absichtlich offen gelassene RDP-Regel wurde von Defender erkannt und auf eine konkrete IP-Adresse eingeschränkt.
 
 - ✅ Secure Score überprüft (**31%**)
-- ⚠️ Empfehlungen prüfen & umsetzen: **nicht abgeschlossen** — Defenders Ressourcen-Inventar hatte die neu erstellten Ressourcen (`vm-app01`, `vm-mgmt01`, NSGs, Storage Account) innerhalb des Projektzeitraums noch nicht vollständig synchronisiert, obwohl der Foundational-CSPM-Plan aktiv war und volle Abdeckung zeigte. Dies ist ein bekanntes Synchronisierungsverhalten bei frischen Azure-for-Students-Subscriptions.
+- ✅ Empfehlungen für `rg-cloudstart` gefiltert (9 Findings für `vm-app01` und `stcloudstartmr`)
+- ✅ Empfehlung "Management ports should be closed" geprüft und umgesetzt
+- ✅ `nsg-app` → `Allow-RDP`: Source von `Any` → eigene IP-Adresse (`/32`) geändert
+
+> 💡 **Vorher:** RDP-Port für das gesamte Internet offen (`Any`)
+> 💡 **Nachher:** RDP-Port auf eine einzige vertrauenswürdige IP-Adresse eingeschränkt
+
+> ⚠️ **Erkenntnis:** Defender for Cloud's Empfehlungs-Engine kann mehrere Stunden (manchmal bis zu 24h) brauchen, um brandneue Ressourcen vollständig zu indexieren — auch wenn der Plan selbst sofort aktiv ist. Sicherheitsüberprüfungen einen Tag nach der Ressourcenerstellung einzuplanen, vermeidet diese Lücke.
 
 📸
-![Secure Score](./screenshots/a6-defender/01-secure-score.png)
+| Secure Score | Empfehlungsliste |
+|---|---|
+| ![Secure Score](./screenshots/a6-defender/01-secure-score.png) | ![Empfehlungsliste](./screenshots/a6-defender/02-recommendations-list.png) |
 
-> 💡 **Erkenntnis:** Defender for Cloud's Empfehlungs-Engine kann mehrere Stunden (manchmal bis zu 24h) brauchen, um brandneue Ressourcen vollständig zu indexieren — auch wenn der Plan selbst sofort aktiv ist. Sicherheitsüberprüfungen einen Tag nach der Ressourcenerstellung einzuplanen, statt direkt im Anschluss, würde diese Lücke vermeiden.
+| Management Ports Empfehlung | NSG RDP-Regel behoben |
+|---|---|
+| ![Management Ports](./screenshots/a6-defender/03-management-ports-recommendation.png) | ![NSG RDP Fix](./screenshots/a6-defender/04-nsg-rdp-fix.png) |
 
 ---
 
